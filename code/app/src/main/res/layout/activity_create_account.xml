@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/color_violet"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_5"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:paddingTop="@dimen/padding_20"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:contentDescription="@string/app_name"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgViewBack"
+                android:src="@drawable/ic_arrow_back_white_18dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                style="@style/textViewStyleColorWhiteLogin"
+                android:gravity="center"
+                android:text="@string/name_login_create_account"/>
+
+            <ImageView
+                android:contentDescription="@string/app_name"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check_white_18dp"
+                android:id="@+id/imgViewDoneRegister"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_40"
+            android:id="@+id/imgViewUploadAvatar"
+
+            android:src="@drawable/ic_linked_camera_white_48dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/color_white_100"
+        android:padding="@dimen/padding_20"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_full_name"
+            style="textViewStyleColorWhiteLogin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edtFullName"
+            style="@style/editTextLogin"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_login_email"
+            style="textViewStyleColorWhiteLogin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            style="@style/editTextLogin"
+            android:id="@+id/edtEmail"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_login_password"
+            style="textViewStyleColorWhiteLogin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            style="@style/editTextLogin"
+            android:id="@+id/edtPassword"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_birthday"
+            style="textViewStyleColorWhiteLogin"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            style="@style/editTextLogin"
+            android:inputType="date"
+            android:id="@+id/edtBirthDay"
+            android:imeOptions="actionDone"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_gender"
+                style="textViewStyleColorWhiteLogin"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:id="@+id/radioGroupGender"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_height="wrap_content">
+
+
+                    <RadioButton
+                        style="@style/MyRadioButtonStyle"
+                        android:checked="true"
+                        android:id="@+id/radioButtonFemale"
+                        android:layout_width="wrap_content"
+                        android:text="@string/name_female"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="@dimen/padding_20"
+                        android:paddingEnd="@dimen/padding_20"
+                        android:paddingLeft="0dp"
+                        android:paddingStart="0dp"
+                      />
+
+                    <RadioButton
+                        style="@style/MyRadioButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name_male"
+                        android:id="@+id/radioButtonMale" />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/padding_20">
+
+
+            <TextView
+                style="@style/textViewLogin"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/name_already_have_account"
+                android:id="@+id/textView2" />
+
+            <TextView
+                style="@style/textViewLogin"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black_80"
+                android:text="@string/name_login_sign_in"
+                android:id="@+id/tvSignIn" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

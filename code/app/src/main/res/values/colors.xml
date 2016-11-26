@@ -2,5 +2,17 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorBlack">#000000</color>
+    <color name="color_black_80">#da000000</color>
+    <color name="color_black_50">#7d000000</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="color_white_100">#ffffff</color>
+    <color name="color_white_70">#d5ffffff</color>
+    <color name="color_white_60">#afffffff</color>
+    <color name="color_white_40">#6cffffff</color>
+    <color name="color_white_25">#1bffffff</color>
+    <color name="color_divider_silver">#EFF0F2</color>
+    <color name="color_bg_search">#F5F9FB</color>
+    <color name="color_bg_tv_tag">#bfc4c9</color>
+    <color name="color_violet">#d936ef</color>
 </resources>
