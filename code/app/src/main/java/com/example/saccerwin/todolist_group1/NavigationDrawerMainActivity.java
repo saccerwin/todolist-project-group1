@@ -1,24 +1,52 @@
 package com.example.saccerwin.todolist_group1;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.Date;
 
 public class NavigationDrawerMainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainFragment.OnFragmentInteractionListener {
+
+    private Toolbar toolbar;
+    private TextView tvGreeting;
+    private int hour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Date dayNow = new Date();
+        hour= dayNow.getHours();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
+        tvGreeting = (TextView) toolbar.findViewById(R.id.tvGreeting);
         setSupportActionBar(toolbar);
+
+        if (savedInstanceState == null) {
+            Fragment fragment = null;
+            Class fragmentClass = MainFragment.class;
+            try {
+                tvGreeting.setText(setGreeting(hour));
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -38,21 +66,6 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         } //else {
             //super.onBackPressed();
         //}
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -78,5 +91,23 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    private String setGreeting(int hour){
+        if(0 <= hour && hour < 12){
+            return "Good Morning!";
+        } else if(12 <= hour && hour < 18){
+            return "Good Afternoon!";
+        } else if(18 <= hour && hour < 21){
+            return "Good Evening!";
+        } else {
+            return "Good Night!";
+        }
     }
 }
