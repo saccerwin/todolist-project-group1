@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -15,17 +16,17 @@
     </style>
 
     <style name="textViewLogin">
-        <item name="android:textColor"> @color/color_black_50</item>
+        <item name="android:textColor">@color/color_black_50</item>
         <item name="android:textSize">8sp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingLeft">5dp</item>
-        
+
     </style>
-    
+
     <style name="editTextLogin">
         <item name="android:paddingLeft">5dp</item>
-        
+
     </style>
 
     <style name="textViewStyleColorWhiteLogin">
@@ -38,5 +39,9 @@
         <item name="android:button">@drawable/custom_btn_radio</item>
 
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

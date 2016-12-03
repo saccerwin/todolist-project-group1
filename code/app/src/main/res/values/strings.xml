@@ -17,4 +17,10 @@
     <string name="name_female"> Female</string>
     <string name="name_male"> Male</string>
     <string name="name_already_have_account"> Already have an account? </string>
+    <string name="title_activity_navigation_drawer_main">NavigationDrawerMainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
