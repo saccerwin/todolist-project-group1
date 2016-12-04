@@ -19,10 +19,13 @@
     <string name="name_already_have_account"> Already have an account? </string>
     <string name="title_activity_navigation_drawer_main">NavigationDrawerMainActivity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
+    <!-- Navigation -->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="navigation_menu_home">Home</string>
+    <string name="navigation_menu_overview">Overview</string>
+    <string name="navigation_menu_groups">Groups</string>
+    <string name="navigation_menu_profile">Profile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
