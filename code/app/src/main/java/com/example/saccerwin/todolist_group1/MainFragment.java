@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.Date;
 
 
 /**
@@ -30,6 +33,8 @@ public class MainFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private View view;
+
+    private TextView tvDay, tvMonthYear;
 
     public MainFragment() {
         // Required empty public constructor
@@ -60,6 +65,12 @@ public class MainFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -67,6 +78,11 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        tvDay = (TextView) view.findViewById(R.id.tvDay);
+        tvMonthYear = (TextView) view.findViewById(R.id.tvMonthYear);
+
+        setDayMonthYear();
 
         return view;
     }
@@ -108,5 +124,65 @@ public class MainFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    /**
+     * This function update tvDay tvMonthYear
+     * return void
+     */
+    private void setDayMonthYear() {
+        Date now = new Date();
+        int tempDay = now.getDay();
+        int tempDate = now.getDate();
+        int tempMonth = now.getMonth();
+        int tempYear = now.getYear() + 1900;
+        String tempDateMonthYear = "";
+        if (tempDay == 0) {
+            tvDay.setText("Sunday");
+        } else if (tempDay == 1) {
+            tvDay.setText("Monday");
+        } else if (tempDay == 2) {
+            tvDay.setText("Tuesday");
+        } else if (tempDay == 3) {
+            tvDay.setText("wednesday");
+        } else if (tempDay == 4) {
+            tvDay.setText("Thursday");
+        } else if (tempDay == 5) {
+            tvDay.setText("Friday");
+        } else {
+            tvDay.setText("Saturday");
+        }
+
+        if (tempMonth == 0) {
+            tempDateMonthYear += "January ";
+        } else if (tempMonth == 1) {
+            tempDateMonthYear += "February ";
+        } else if (tempMonth == 2) {
+            tempDateMonthYear += "March ";
+        } else if (tempMonth == 3) {
+            tempDateMonthYear += "April ";
+        } else if (tempMonth == 4) {
+            tempDateMonthYear += "May ";
+        } else if (tempMonth == 5) {
+            tempDateMonthYear += "June ";
+        } else if (tempMonth == 6) {
+            tempDateMonthYear += "July ";
+        } else if (tempMonth == 7) {
+            tempDateMonthYear += "August ";
+        } else if (tempMonth == 8) {
+            tempDateMonthYear += "September ";
+        } else if (tempMonth == 9) {
+            tempDateMonthYear += "October ";
+        } else if (tempMonth == 10) {
+            tempDateMonthYear += "November ";
+        } else {
+            tempDateMonthYear += "December ";
+        }
+
+        tempDateMonthYear += tempDate + ", ";
+        tempDateMonthYear += tempYear;
+
+        tvMonthYear.setText(tempDateMonthYear);
+
     }
 }

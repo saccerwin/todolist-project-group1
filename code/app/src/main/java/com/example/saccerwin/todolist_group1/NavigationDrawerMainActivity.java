@@ -19,19 +19,18 @@ import android.widget.TextView;
 import java.util.Date;
 
 public class NavigationDrawerMainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MainFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainFragment.OnFragmentInteractionListener{
 
     private Toolbar toolbar;
     private TextView tvGreeting, tvCountTask, tvCountGroup;
     private int hour;
     public Date dayNow;
+    public int countTask, countGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_main);
-        dayNow = new Date();
-        hour = dayNow.getHours();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
@@ -42,7 +41,7 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
             Fragment fragment = null;
             Class fragmentClass = MainFragment.class;
             try {
-                tvGreeting.setText(setGreeting(hour));
+                tvGreeting.setText(setGreeting());
                 fragment = (Fragment) fragmentClass.newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -69,16 +68,10 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         initializeCountDrawer();
     }
 
-    private void initializeCountDrawer() {
-        tvCountTask.setGravity(Gravity.CENTER_VERTICAL);
-        tvCountTask.setTypeface(null, Typeface.BOLD);
-        tvCountTask.setTextColor(getResources().getColor(R.color.colorBlack));
-        tvCountTask.setText("99+");
-
-        tvCountGroup.setGravity(Gravity.CENTER_VERTICAL);
-        tvCountGroup.setTypeface(null, Typeface.BOLD);
-        tvCountGroup.setTextColor(getResources().getColor(R.color.colorBlack));
-        tvCountGroup.setText("99+");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tvGreeting.setText(setGreeting());
     }
 
     @Override
@@ -97,7 +90,13 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment fragment = null;
+        Class fragmentClass = null;
+
         if (id == R.id.navHome) {
+
+            tvGreeting.setText(setGreeting());
+            fragmentClass = MainFragment.class;
 
         } else if (id == R.id.navOverView) {
 
@@ -106,6 +105,13 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         } else if (id == R.id.navProfile) {
 
         }
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -118,7 +124,13 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
 
     }
 
-    private String setGreeting(int hour) {
+    /**
+     * Function return the Greeting for Layout Home
+     * @return String
+     */
+    private String setGreeting() {
+        dayNow = new Date();
+        hour = dayNow.getHours();
         if (0 <= hour && hour < 12) {
             return "Good Morning!";
         } else if (12 <= hour && hour < 18) {
@@ -128,5 +140,21 @@ public class NavigationDrawerMainActivity extends AppCompatActivity
         } else {
             return "Good Night!";
         }
+    }
+
+    /**
+     * update the number of Task and the number of Groups in badges in navigation drawer
+     * @retun void
+     */
+    private void initializeCountDrawer() {
+        tvCountTask.setGravity(Gravity.CENTER_VERTICAL);
+        tvCountTask.setTypeface(null, Typeface.BOLD);
+        tvCountTask.setTextColor(getResources().getColor(R.color.colorBlack));
+        tvCountTask.setText("99+");
+
+        tvCountGroup.setGravity(Gravity.CENTER_VERTICAL);
+        tvCountGroup.setTypeface(null, Typeface.BOLD);
+        tvCountGroup.setTextColor(getResources().getColor(R.color.colorBlack));
+        tvCountGroup.setText("99+");
     }
 }
