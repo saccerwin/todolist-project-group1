@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_15">
+
+    <CheckBox
+        android:id="@+id/cbComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/check_selector"
+        android:checked="true"
+        android:layout_gravity="center_vertical"
+        android:background="@null"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <LinearLayout
+        android:layout_toRightOf="@+id/cbComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_15"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvRecyclerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/color_white_100"
+            android:text="Finish Home Screen"/>
+        <TextView
+            android:id="@+id/tvRecyclerGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_white_100"
+            android:textSize="@dimen/text_size_10"
+            android:text="Web App * Work"/>
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/tvRecyclerTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/color_white_100"
+        android:text="9 - 11 am"/>
+
+</RelativeLayout>

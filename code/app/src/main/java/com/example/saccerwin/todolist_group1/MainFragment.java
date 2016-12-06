@@ -4,12 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.saccerwin.todolist_group1.adapter.TaskRecyclerAdapter;
+import com.example.saccerwin.todolist_group1.constant.SimpleDividerItemDecoration;
+import com.example.saccerwin.todolist_group1.objects.Task;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -35,6 +44,12 @@ public class MainFragment extends Fragment {
     private View view;
 
     private TextView tvDay, tvMonthYear;
+
+    private RecyclerView recyclerTask;
+    private TaskRecyclerAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    private List<Task> listTask = new ArrayList<Task>();
 
     public MainFragment() {
         // Required empty public constructor
@@ -71,6 +86,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        setDayMonthYear();
     }
 
     @Override
@@ -81,10 +97,132 @@ public class MainFragment extends Fragment {
 
         tvDay = (TextView) view.findViewById(R.id.tvDay);
         tvMonthYear = (TextView) view.findViewById(R.id.tvMonthYear);
+        recyclerTask = (RecyclerView) view.findViewById(R.id.recyclerTask);
 
         setDayMonthYear();
 
+        createView();
+
+        // If the size of views will not change as the data changes.
+        recyclerTask.setHasFixedSize(true);
+
+        // Create divider between items
+        recyclerTask.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+
+        // Setting the LayoutManager.
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerTask.setLayoutManager(layoutManager);
+
+        // Setting the adapter.
+        adapter = new TaskRecyclerAdapter(getContext(), listTask, new TaskRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Task item) {
+                if(item.isComplete() == false){
+                    item.setComplete(true);
+                } else {
+                    item.setComplete(false);
+                }
+                for(int i = 0; i < listTask.size(); i++){
+                    if(listTask.get(i).getId() == item.getId()){
+                        listTask.set(i, item);
+                        Toast.makeText(getActivity(), String.valueOf(listTask.get(i).isComplete()), Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
+            }
+        });
+
+        recyclerTask.setAdapter(adapter);
+
         return view;
+    }
+
+    private void createView() {
+        Task task = new Task();
+        task.setId(1);
+        task.setComplete(false);
+        task.setDate("30-7-2016");
+        task.setTime("9 - 11 am");
+        task.setTitle("Di choi1");
+        task.setDescription("Di choi");
+        task.setLocation("1111");
+        task.setGroup("Work");
+        task.setAllday(true);
+        listTask.add(task);
+
+        Task task2 = new Task();
+        task2.setId(2);
+        task2.setComplete(true);
+        task2.setDate("30-7-2016");
+        task2.setTime("9 - 11 am");
+        task2.setTitle("Di choi2");
+        task2.setDescription("Di choi");
+        task2.setLocation("1111");
+        task2.setGroup("Work");
+        task2.setAllday(true);
+        listTask.add(task2);
+
+        Task task3 = new Task();
+        task3.setId(3);
+        task3.setComplete(true);
+        task3.setDate("30-7-2016");
+        task3.setTime("9 - 11 am");
+        task3.setTitle("Di choi3");
+        task3.setDescription("Di choi");
+        task3.setLocation("1111");
+        task3.setGroup("Work");
+        task3.setAllday(true);
+        listTask.add(task3);
+
+        Task task4 = new Task();
+        task4.setId(4);
+        task4.setComplete(true);
+        task4.setDate("30-7-2016");
+        task4.setTime("9 - 11 am");
+        task4.setTitle("Di choi3");
+        task4.setDescription("Di choi");
+        task4.setLocation("1111");
+        task4.setGroup("Work");
+        task4.setAllday(true);
+        listTask.add(task4);
+
+        Task task5 = new Task();
+        task5.setId(5);
+        task5.setComplete(true);
+        task5.setDate("30-7-2016");
+        task5.setTime("9 - 11 am");
+        task5.setTitle("Di choi3");
+        task5.setDescription("Di choi");
+        task5.setLocation("1111");
+        task5.setGroup("Work");
+        task5.setAllday(true);
+        listTask.add(task5);
+
+        Task task6 = new Task();
+        task6.setId(6);
+        task6.setComplete(true);
+        task6.setDate("30-7-2016");
+        task6.setTime("9 - 11 am");
+        task6.setTitle("Di choi3");
+        task6.setDescription("Di choi");
+        task6.setLocation("1111");
+        task6.setGroup("Work");
+        task6.setAllday(true);
+        listTask.add(task6);
+
+        Task task7 = new Task();
+        task7.setId(7);
+        task7.setComplete(true);
+        task7.setDate("30-7-2016");
+        task7.setTime("9 - 11 am");
+        task7.setTitle("Di choi3");
+        task7.setDescription("Di choi");
+        task7.setLocation("1111");
+        task7.setGroup("Work");
+        task7.setAllday(true);
+        listTask.add(task7);
+
+        //adapter.notifyDataSetChanged();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

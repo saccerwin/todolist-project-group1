@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     tools:context="com.example.saccerwin.todolist_group1.MainFragment">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@null"
+        android:clickable="true"
+        android:src="@drawable/ic_plus" />
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,16 +50,17 @@
             android:alpha="0.6"
             android:background="@drawable/background"
             android:gravity="center"
+            android:orientation="vertical"
             android:scaleType="fitXY">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@null"
-                android:clickable="true"
-                android:src="@drawable/ic_plus" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerTask"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_25"
+                android:paddingRight="@dimen/padding_25"
+                android:scrollbars="vertical" />
+
         </LinearLayout>
 
     </LinearLayout>

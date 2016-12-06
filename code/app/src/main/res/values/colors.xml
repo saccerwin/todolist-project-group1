@@ -15,4 +15,5 @@
     <color name="color_bg_search">#F5F9FB</color>
     <color name="color_bg_tv_tag">#bfc4c9</color>
     <color name="color_violet">#d936ef</color>
+    <color name="color_line_gray">#BDBDBD</color>
 </resources>

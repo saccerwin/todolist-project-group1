@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         tvCreateAccount = (TextView) findViewById(R.id.tvCreateAccount);
         tvCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
 
