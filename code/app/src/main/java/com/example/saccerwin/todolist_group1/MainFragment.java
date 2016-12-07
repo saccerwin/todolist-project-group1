@@ -124,8 +124,7 @@ public class MainFragment extends Fragment {
                 }
                 for(int i = 0; i < listTask.size(); i++){
                     if(listTask.get(i).getId() == item.getId()){
-                        listTask.set(i, item);
-                        Toast.makeText(getActivity(), String.valueOf(listTask.get(i).isComplete()), Toast.LENGTH_SHORT).show();
+                        //listTask.set(i, item);
                         break;
                     }
                 }

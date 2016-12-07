@@ -25,7 +25,8 @@
             android:id="@+id/tvRecyclerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_15"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/text_size_20"
             android:textColor="@color/color_white_100"
             android:text="Finish Home Screen"/>
         <TextView
@@ -33,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_white_100"
-            android:textSize="@dimen/text_size_10"
+            android:fontFamily="sans-serif-condensed-light"
+            android:textSize="@dimen/text_size_15"
             android:text="Web App * Work"/>
     </LinearLayout>
     
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textColor="@color/color_white_100"
+        android:fontFamily="sans-serif-condensed-light"
         android:text="9 - 11 am"/>
 
 </RelativeLayout>
