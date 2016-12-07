@@ -16,4 +16,25 @@
     <color name="color_bg_tv_tag">#bfc4c9</color>
     <color name="color_violet">#d936ef</color>
     <color name="color_line_gray">#BDBDBD</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen4">#BA77FF</color>
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen4">#a854d4</color>
+    <!-- dots active colors -->
+    <color name="dot_light_screen4">#e4b5fc</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
 </resources>
