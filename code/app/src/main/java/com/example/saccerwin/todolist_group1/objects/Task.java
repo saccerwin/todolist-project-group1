@@ -15,6 +15,7 @@ public class Task {
     private String group;
     private String location;
     private boolean allDay;
+    private boolean isFinish;
 
     public int getId() {
         return id;
@@ -86,5 +87,13 @@ public class Task {
 
     public void setAllday(boolean allday) {
         this.allDay = allday;
+    }
+
+    public boolean isFinish() {
+        return isFinish;
+    }
+
+    public void setFinish(boolean finish) {
+        isFinish = finish;
     }
 }
