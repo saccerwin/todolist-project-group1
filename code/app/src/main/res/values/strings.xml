@@ -27,6 +27,26 @@
     <string name="navigation_menu_groups">Groups</string>
     <string name="navigation_menu_profile">Profile</string>
 
+    <!-- Welcome -->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">FINISH</string>
+
+    <string name="slide_1_title">Todo App!</string>
+    <string name="slide_1_desc">Your friendly managers work!</string>
+
+    <string name="slide_2_title">Dayly Planner</string>
+    <string name="slide_2_desc">Do is a to do list, a calendar!</string>
+
+    <string name="slide_3_title">Grouping</string>
+    <string name="slide_3_desc">Clearer, more convenient for work!</string>
+
+    <string name="slide_4_title">Made Simple</string>
+    <string name="slide_4_desc">Keep yourself organized and enjoy every minute of it!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
