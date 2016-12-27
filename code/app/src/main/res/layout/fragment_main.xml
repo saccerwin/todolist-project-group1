@@ -57,6 +57,7 @@
                 android:id="@+id/recyclerTask"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/color_black_50"
                 android:paddingLeft="@dimen/padding_25"
                 android:paddingRight="@dimen/padding_25"
                 android:scrollbars="vertical" />

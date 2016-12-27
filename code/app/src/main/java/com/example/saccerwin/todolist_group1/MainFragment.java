@@ -1,9 +1,11 @@
 package com.example.saccerwin.todolist_group1;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.saccerwin.todolist_group1.adapter.TaskRecyclerAdapter;
+import com.example.saccerwin.todolist_group1.adapters.TaskRecyclerAdapter;
 import com.example.saccerwin.todolist_group1.constant.SimpleDividerItemDecoration;
 import com.example.saccerwin.todolist_group1.objects.Task;
 
@@ -104,7 +106,7 @@ public class MainFragment extends Fragment {
         createView();
 
         // If the size of views will not change as the data changes.
-        recyclerTask.setHasFixedSize(true);
+        //recyclerTask.setHasFixedSize(true);
 
         // Create divider between items
         recyclerTask.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
@@ -122,12 +124,38 @@ public class MainFragment extends Fragment {
                 } else {
                     item.setComplete(false);
                 }
+                if(item.isFinish() == false){
+                    item.setFinish(true);
+                } else {
+                    item.setFinish(false);
+                }
                 for(int i = 0; i < listTask.size(); i++){
                     if(listTask.get(i).getId() == item.getId()){
-                        //listTask.set(i, item);
+                        listTask.set(i, item);
                         break;
                     }
                 }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public boolean onItemLongClick(final Task item) {
+                CharSequence menus[] = new CharSequence[] {"Edit","Delete"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setItems(menus, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(i == 0){
+
+                            Toast.makeText(getContext(),"Edit " + item.getId(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(),"Delete", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.show();
+                return false;
             }
         });
 
@@ -139,7 +167,7 @@ public class MainFragment extends Fragment {
     private void createView() {
         Task task = new Task();
         task.setId(1);
-        task.setComplete(false);
+        task.setComplete(true);
         task.setDate("30-7-2016");
         task.setTime("9 - 11 am");
         task.setTitle("Di choi1");
@@ -147,6 +175,7 @@ public class MainFragment extends Fragment {
         task.setLocation("1111");
         task.setGroup("Work");
         task.setAllday(true);
+        task.setFinish(true);
         listTask.add(task);
 
         Task task2 = new Task();
@@ -159,23 +188,25 @@ public class MainFragment extends Fragment {
         task2.setLocation("1111");
         task2.setGroup("Work");
         task2.setAllday(true);
+        task2.setFinish(true);
         listTask.add(task2);
 
         Task task3 = new Task();
         task3.setId(3);
-        task3.setComplete(true);
+        task3.setComplete(false);
         task3.setDate("30-7-2016");
         task3.setTime("9 - 11 am");
         task3.setTitle("Di choi3");
         task3.setDescription("Di choi");
         task3.setLocation("1111");
         task3.setGroup("Work");
-        task3.setAllday(true);
+        task3.setAllday(false);
+        task3.setFinish(false);
         listTask.add(task3);
 
         Task task4 = new Task();
         task4.setId(4);
-        task4.setComplete(true);
+        task4.setComplete(false);
         task4.setDate("30-7-2016");
         task4.setTime("9 - 11 am");
         task4.setTitle("Di choi3");
@@ -183,11 +214,12 @@ public class MainFragment extends Fragment {
         task4.setLocation("1111");
         task4.setGroup("Work");
         task4.setAllday(true);
+        task4.setFinish(false);
         listTask.add(task4);
 
         Task task5 = new Task();
         task5.setId(5);
-        task5.setComplete(true);
+        task5.setComplete(false);
         task5.setDate("30-7-2016");
         task5.setTime("9 - 11 am");
         task5.setTitle("Di choi3");
@@ -195,11 +227,12 @@ public class MainFragment extends Fragment {
         task5.setLocation("1111");
         task5.setGroup("Work");
         task5.setAllday(true);
+        task5.setFinish(false);
         listTask.add(task5);
 
         Task task6 = new Task();
         task6.setId(6);
-        task6.setComplete(true);
+        task6.setComplete(false);
         task6.setDate("30-7-2016");
         task6.setTime("9 - 11 am");
         task6.setTitle("Di choi3");
@@ -207,11 +240,12 @@ public class MainFragment extends Fragment {
         task6.setLocation("1111");
         task6.setGroup("Work");
         task6.setAllday(true);
+        task6.setFinish(false);
         listTask.add(task6);
 
         Task task7 = new Task();
         task7.setId(7);
-        task7.setComplete(true);
+        task7.setComplete(false);
         task7.setDate("30-7-2016");
         task7.setTime("9 - 11 am");
         task7.setTitle("Di choi3");
@@ -219,6 +253,7 @@ public class MainFragment extends Fragment {
         task7.setLocation("1111");
         task7.setGroup("Work");
         task7.setAllday(true);
+        task7.setFinish(false);
         listTask.add(task7);
 
         //adapter.notifyDataSetChanged();
@@ -281,7 +316,7 @@ public class MainFragment extends Fragment {
         } else if (tempDay == 2) {
             tvDay.setText("Tuesday");
         } else if (tempDay == 3) {
-            tvDay.setText("wednesday");
+            tvDay.setText("Wednesday");
         } else if (tempDay == 4) {
             tvDay.setText("Thursday");
         } else if (tempDay == 5) {

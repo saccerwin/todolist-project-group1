@@ -1,19 +1,17 @@
-package com.example.saccerwin.todolist_group1.adapter;
+package com.example.saccerwin.todolist_group1.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.saccerwin.todolist_group1.LoginActivity;
-import com.example.saccerwin.todolist_group1.NavigationDrawerMainActivity;
 import com.example.saccerwin.todolist_group1.R;
 import com.example.saccerwin.todolist_group1.objects.Task;
 
@@ -58,6 +56,7 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
      */
     public interface OnItemClickListener {
         void onItemClick(Task item);
+        boolean onItemLongClick(Task item);
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
@@ -75,20 +74,26 @@ public class TaskRecyclerAdapter extends RecyclerView.Adapter<TaskRecyclerAdapte
 
         public void bind(final Task task, final OnItemClickListener listener) {
             tvRecyclerTitle.setText(task.getTitle());
+            if(task.isFinish() == true){
+                tvRecyclerTitle.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+            } else {
+                tvRecyclerTitle.setPaintFlags(tvRecyclerTitle.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            }
             tvRecyclerGroup.setText(task.getGroup());
             tvRecyclerTime.setText(task.getTime());
             cbComplete.setChecked(task.isComplete());
-            cbComplete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(task);
-                }
-            });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(mContext, LoginActivity.class);
-                    mContext.startActivity(intent);
+                    listener.onItemClick(task);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener(){
+
+                @Override
+                public boolean onLongClick(View view) {
+                    listener.onItemLongClick(task);
+                    return false;
                 }
             });
         }
