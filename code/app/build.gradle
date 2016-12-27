@@ -31,9 +31,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-analytics:8.3.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:support-v4:24.2.1'
-<<<<<<< HEAD
-=======
     compile 'com.android.support:recyclerview-v7:+'
->>>>>>> 10d60c6587ea29b16ae31b5bb17e88488e179f4f
     testCompile 'junit:junit:4.12'
 }
