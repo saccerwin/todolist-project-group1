@@ -5,65 +5,73 @@
     android:layout_height="match_parent"
     tools:context="com.example.saccerwin.todolist_group1.MainFragment">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="@dimen/padding_10"
-        android:src="@drawable/plus"
-        app:backgroundTint="@color/color_violet" />
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/color_violet"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvDay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monday"
-                android:textColor="@color/color_white_100"
-                android:textSize="@dimen/text_size_25" />
-
-            <TextView
-                android:id="@+id/tvMonthYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="February 8, 2016"
-                android:textColor="@color/color_white_100"
-                android:textSize="@dimen/text_size_15" />
-
-        </LinearLayout>
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="1.2"
-            android:background="@drawable/home_background"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:scaleType="fitXY">
+            android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerTask"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/color_violet"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monday"
+                    android:textColor="@color/color_white_100"
+                    android:textSize="@dimen/text_size_25" />
+
+                <TextView
+                    android:id="@+id/tvMonthYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="February 8, 2016"
+                    android:textColor="@color/color_white_100"
+                    android:textSize="@dimen/text_size_15" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutRecycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_black_50"
-                android:paddingLeft="@dimen/padding_25"
-                android:paddingRight="@dimen/padding_25"
-                android:scrollbars="vertical" />
+                android:alpha="1.2"
+                android:background="@drawable/home_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:scaleType="fitXY">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_black_50"
+                    android:paddingLeft="@dimen/padding_25"
+                    android:paddingRight="@dimen/padding_25"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/padding_10"
+            android:clickable="true"
+            android:src="@drawable/plus"
+            app:layout_anchor="@id/layoutRecycle"
+            app:layout_anchorGravity="bottom|center"
+            app:background="@color/color_violet"
+            app:backgroundTint="@color/color_violet" />
+        <!-- TODO: Update blank fragment layout -->
+    </android.support.design.widget.CoordinatorLayout>
 </FrameLayout>
