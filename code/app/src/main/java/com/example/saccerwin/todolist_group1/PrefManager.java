@@ -28,7 +28,7 @@ public class PrefManager {
         mEditor = mPref.edit();
     }
 
-    public void setFirstimeLaunch(boolean isFirstTime) {
+    public void setIsFirstTimeLaunch(boolean isFirstTime) {
         mEditor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         mEditor.apply();
     }
